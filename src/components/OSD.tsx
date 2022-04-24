@@ -38,14 +38,12 @@ const OSD: React.FC<OSDProps> = ({ uri, imageType }) => {
         case "simpleImage":
           OpenSeadragon(config).addSimpleImage({
             url: osdUri,
-            replace: false,
           });
           break;
         case "tiledImage":
           getInfoResponse(osdUri).then((tileSource) =>
             OpenSeadragon(config).addTiledImage({
               tileSource: tileSource,
-              replace: false,
             }),
           );
           break;
