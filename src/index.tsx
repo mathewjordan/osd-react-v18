@@ -4,7 +4,7 @@ import ImageViewer from "components/ImageViewer";
 const App = ({ service }) => {
   if (!service) return <></>;
 
-  return <ImageViewer service={service} />;
+  return <ImageViewer service={service} type="tiledImage" />;
 };
 
 export default App;
