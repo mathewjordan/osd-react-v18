@@ -1,12 +1,12 @@
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 import { ServiceStyled } from "./Service.styled";
 import services from "./services";
 
 interface ServiceProps {
-  handleChange: () => {};
+  handleChange: ChangeEventHandler<HTMLSelectElement> | undefined;
 }
 
-const Service: React.FC = ({ handleChange }) => {
+const Service: React.FC<ServiceProps> = ({ handleChange }) => {
   return (
     <ServiceStyled onChange={handleChange}>
       {services.map((service, index) => (
