@@ -1,22 +1,23 @@
 import React, { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./index";
-import Service from "./dev/Service";
-import services from "./dev/services";
+import Body from "./dev/Body";
+import bodies from "./dev/bodies";
+import { IIIFExternalWebResource } from "@iiif/presentation-3";
 
 const Wrapper = () => {
-  const [service, setService] = useState();
-  const [serviceIndex, setServiceIndex] = useState<number>(0);
-  const handleChange = (e) => setServiceIndex(e.target.value);
+  const [body, setBody] = useState();
+  const [bodyIndex, setBodyIndex] = useState<number>(0);
+  const handleChange = (e) => setBodyIndex(e.target.value);
 
   useEffect(() => {
-    setService([services[serviceIndex].service]);
-  }, [serviceIndex]);
+    setBody(bodies[bodyIndex].body);
+  }, [bodyIndex]);
 
   return (
     <>
-      <Service handleChange={handleChange} />
-      <App service={service} />
+      <Body handleChange={handleChange} />
+      <App body={body as IIIFExternalWebResource} />
     </>
   );
 };

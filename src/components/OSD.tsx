@@ -33,13 +33,29 @@ const OSD: React.FC<OSDProps> = ({ uri, imageType }) => {
   }, []);
 
   useEffect(() => {
-    if (osdUri)
-      getInfoResponse(osdUri).then((tileSource) =>
-        OpenSeadragon(config).addTiledImage({
-          tileSource: tileSource,
-          replace: false,
-        }),
-      );
+    if (osdUri) {
+      switch (imageType) {
+        case "simpleImage":
+          OpenSeadragon(config).addSimpleImage({
+            url: osdUri,
+            replace: false,
+          });
+          break;
+        case "tiledImage":
+          getInfoResponse(osdUri).then((tileSource) =>
+            OpenSeadragon(config).addTiledImage({
+              tileSource: tileSource,
+              replace: false,
+            }),
+          );
+          break;
+        default:
+          console.warn(
+            `Unable to render ${osdUri} in OpenSeadragon as type: "${imageType}"`,
+          );
+          break;
+      }
+    }
   }, [osdUri]);
 
   return (

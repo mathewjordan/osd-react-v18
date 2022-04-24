@@ -1,10 +1,10 @@
 import React from "react";
 import ImageViewer from "components/ImageViewer";
 
-const App = ({ service }) => {
-  if (!service) return <></>;
+const App = ({ body }) => {
+  if (!body) return <></>;
 
-  return <ImageViewer service={service} />;
+  return <ImageViewer body={body} />;
 };
 
 export default App;
